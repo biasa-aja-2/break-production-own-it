@@ -36,6 +36,8 @@ def check(line):
         failures.append("line has leading or trailing whitespace")
     if "\n" in line or "\r" in line:
         failures.append("line is not a single line")
+    if "  " in line:
+        failures.append("line contains a double space")
     for ch in line:
         if ord(ch) < 0x20 and ch not in ("\t",):
             failures.append("line contains control character U+%04X" % ord(ch))
